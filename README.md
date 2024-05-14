@@ -13,23 +13,19 @@
 Clone the repository :
 
 ```shell
-git clone https://codefirst.iut.uca.fr/git/axel.de_la_fuente/DouShouQi.git
+git clone https://codefirst.iut.uca.fr/git/axel.de_la_fuente/doushouqi-app.git
 ```
 
 Build dependencies :
 
 ```shell
-cd ./Sources/Model/
-swift build
-cd ../CommandLineExt/
-swift build
+
 ```
 
 Run the app :
 
 ```shell
-cd ../CommandLineTest/
-swift run
+
 ```
 
 # Tests
@@ -37,8 +33,7 @@ swift run
 Tests can be launch by using the following commands :
 
 ```shell
-cd ./Sources/Model/
-swift test
+
 ```
 
 # Author
