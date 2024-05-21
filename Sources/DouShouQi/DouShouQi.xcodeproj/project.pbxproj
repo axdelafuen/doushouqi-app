@@ -17,6 +17,8 @@
 		ECDA74B72BF3B2C10014FFF4 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74B62BF3B2C10014FFF4 /* SettingsPage.swift */; };
 		ECDA74BA2BF3B9A10014FFF4 /* ThemeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74B92BF3B9A10014FFF4 /* ThemeEnum.swift */; };
 		ECDA74BD2BF3BAD70014FFF4 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74BC2BF3BAD70014FFF4 /* ThemePicker.swift */; };
+		ECDA74C42BFCDDBD0014FFF4 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA74C32BFCDDBD0014FFF4 /* DSQ.xcframework */; };
+		ECDA74C52BFCDDBD0014FFF4 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA74C32BFCDDBD0014FFF4 /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		ECDA74C62BFCDDBD0014FFF4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ECDA74C52BFCDDBD0014FFF4 /* DSQ.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		ECDA74842BF3AD500014FFF4 /* DouShouQi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouShouQi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiApp.swift; sourceTree = "<group>"; };
@@ -50,6 +66,8 @@
 		ECDA74B62BF3B2C10014FFF4 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		ECDA74B92BF3B9A10014FFF4 /* ThemeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeEnum.swift; sourceTree = "<group>"; };
 		ECDA74BC2BF3BAD70014FFF4 /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
+		ECDA74BF2BF4CE4B0014FFF4 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../../../../Downloads/swiftui_arkit_2024/XCFramework/DSQ.xcframework; sourceTree = "<group>"; };
+		ECDA74C32BFCDDBD0014FFF4 /* DSQ.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = DSQ.xcframework; path = ../Model/DSQ.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECDA74C42BFCDDBD0014FFF4 /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +103,7 @@
 				ECDA74972BF3AD510014FFF4 /* DouShouQiTests */,
 				ECDA74A12BF3AD510014FFF4 /* DouShouQiUITests */,
 				ECDA74852BF3AD500014FFF4 /* Products */,
+				ECDA74BE2BF4CE4B0014FFF4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +180,15 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
+		ECDA74BE2BF4CE4B0014FFF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECDA74C32BFCDDBD0014FFF4 /* DSQ.xcframework */,
+				ECDA74BF2BF4CE4B0014FFF4 /* DSQ.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,6 +199,7 @@
 				ECDA74802BF3AD500014FFF4 /* Sources */,
 				ECDA74812BF3AD500014FFF4 /* Frameworks */,
 				ECDA74822BF3AD500014FFF4 /* Resources */,
+				ECDA74C62BFCDDBD0014FFF4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
