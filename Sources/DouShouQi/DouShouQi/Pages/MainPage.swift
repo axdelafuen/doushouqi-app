@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SpriteKit
 
 struct MainPage: View {
+    
+    var gameScene:GameScene = GameScene(size: CGSize(width: 960, height: 740))
+    
     var body: some View {
         NavigationStack{
             Text("DouShouQi")
@@ -20,15 +24,28 @@ struct MainPage: View {
                 }
             Spacer()
             
-            Button("Play now", action: {})
-                .buttonStyle(.borderedProminent)
-            
+            NavigationLink {
+                SpriteView(scene: gameScene)
+            } label: {
+                Text("Play now")
+            }
+            .buttonStyle(.borderedProminent)
+                
             Spacer()
             
-            Button("Leaderboard", action: {})
-                .buttonStyle(.bordered)
-            Button("Recorded games", action: {})
-                .buttonStyle(.bordered)
+            NavigationLink {
+                LeaderboardPage()
+            } label: {
+                Text("Leaderboard")
+            }
+            .buttonStyle(.bordered)
+            
+            NavigationLink {
+                RecordedGamesPage()
+            } label: {
+                Text("Recorded games")
+            }
+            .buttonStyle(.bordered)
             
             Spacer()
         }

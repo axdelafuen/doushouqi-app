@@ -245,6 +245,9 @@ public class Game {
   #if compiler(>=5.3) && $AsyncAwait
   public func onPlayed(with move: DouShouQiModel.Move?, from player: DouShouQiModel.Player) async throws
   #endif
+  public var isOver: Swift.Bool {
+    get
+  }
   #if compiler(>=5.3) && $AsyncAwait
   public func start() async throws
   #endif

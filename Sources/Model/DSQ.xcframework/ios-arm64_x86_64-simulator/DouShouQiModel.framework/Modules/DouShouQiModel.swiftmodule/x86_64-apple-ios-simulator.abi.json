@@ -7448,6 +7448,51 @@
             "funcSelfKind": "NonMutating"
           },
           {
+            "kind": "Var",
+            "name": "isOver",
+            "printedName": "isOver",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:14DouShouQiModel4GameC6isOverSbvp",
+            "mangledName": "$s14DouShouQiModel4GameC6isOverSbvp",
+            "moduleName": "DouShouQiModel",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "SetterAccess",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:14DouShouQiModel4GameC6isOverSbvg",
+                "mangledName": "$s14DouShouQiModel4GameC6isOverSbvg",
+                "moduleName": "DouShouQiModel",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "start",
             "printedName": "start()",
@@ -8423,65 +8468,79 @@
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "StringLiteral",
-      "offset": 1477,
+      "offset": 1483,
       "length": 55,
       "value": "\"The ids of players are not .player1 and then .player2\""
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 1748,
+      "offset": 1754,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 2084,
+      "offset": 2090,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 2576,
+      "offset": 2582,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 3006,
+      "offset": 3012,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 3410,
+      "offset": 3416,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 3821,
+      "offset": 3827,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 4255,
+      "offset": 4261,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
       "kind": "Array",
-      "offset": 4574,
+      "offset": 4580,
       "length": 2,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6361,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/marcchevaldonne\/Documents\/temp\/depots2023\/DouShouQi_ModelPackage\/DouShouQiModel\/Game.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7044,
+      "length": 5,
+      "value": "false"
     }
   ]
 }
