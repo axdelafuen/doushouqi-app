@@ -22,6 +22,11 @@
 		ECDA74D12BFE1EE40014FFF4 /* RecordedGamesPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74D02BFE1EE40014FFF4 /* RecordedGamesPage.swift */; };
 		ECDA74D22BFF32120014FFF4 /* DSQ.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA74C32BFCDDBD0014FFF4 /* DSQ.xcframework */; };
 		ECDA74D32BFF32120014FFF4 /* DSQ.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA74C32BFCDDBD0014FFF4 /* DSQ.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		ECDA74D72C0483230014FFF4 /* GamePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74D62C0483230014FFF4 /* GamePage.swift */; };
+		ECDA74DA2C04854A0014FFF4 /* Animal.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74D92C04854A0014FFF4 /* Animal.UI.swift */; };
+		ECDA74DC2C0486010014FFF4 /* Owner.UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74DB2C0486010014FFF4 /* Owner.UI.swift */; };
+		ECDA74DE2C0487930014FFF4 /* PiecesNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74DD2C0487930014FFF4 /* PiecesNode.swift */; };
+		ECDA74E22C048FB10014FFF4 /* BoardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74E12C048FB10014FFF4 /* BoardNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +79,11 @@
 		ECDA74CC2BFE16040014FFF4 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		ECDA74CE2BFE1ECA0014FFF4 /* LeaderboardPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPage.swift; sourceTree = "<group>"; };
 		ECDA74D02BFE1EE40014FFF4 /* RecordedGamesPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedGamesPage.swift; sourceTree = "<group>"; };
+		ECDA74D62C0483230014FFF4 /* GamePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePage.swift; sourceTree = "<group>"; };
+		ECDA74D92C04854A0014FFF4 /* Animal.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.UI.swift; sourceTree = "<group>"; };
+		ECDA74DB2C0486010014FFF4 /* Owner.UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.UI.swift; sourceTree = "<group>"; };
+		ECDA74DD2C0487930014FFF4 /* PiecesNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiecesNode.swift; sourceTree = "<group>"; };
+		ECDA74E12C048FB10014FFF4 /* BoardNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +136,7 @@
 		ECDA74862BF3AD500014FFF4 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				ECDA74D82C0484DD0014FFF4 /* DataModel */,
 				ECDA74C92BFE14C80014FFF4 /* Scenes */,
 				ECDA74BB2BF3BAC40014FFF4 /* Pages */,
 				ECDA74B82BF3B97E0014FFF4 /* UiModel */,
@@ -174,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				ECDA74B92BF3B9A10014FFF4 /* ThemeEnum.swift */,
+				ECDA74DD2C0487930014FFF4 /* PiecesNode.swift */,
+				ECDA74E12C048FB10014FFF4 /* BoardNode.swift */,
 			);
 			path = UiModel;
 			sourceTree = "<group>";
@@ -181,6 +194,7 @@
 		ECDA74BB2BF3BAC40014FFF4 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				ECDA74D62C0483230014FFF4 /* GamePage.swift */,
 				ECDA74B12BF3AD8D0014FFF4 /* MainPage.swift */,
 				ECDA74B62BF3B2C10014FFF4 /* SettingsPage.swift */,
 				ECDA74CE2BFE1ECA0014FFF4 /* LeaderboardPage.swift */,
@@ -204,6 +218,15 @@
 				ECDA74CC2BFE16040014FFF4 /* GameScene.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		ECDA74D82C0484DD0014FFF4 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				ECDA74D92C04854A0014FFF4 /* Animal.UI.swift */,
+				ECDA74DB2C0486010014FFF4 /* Owner.UI.swift */,
+			);
+			path = DataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,8 +362,13 @@
 			files = (
 				ECDA74D12BFE1EE40014FFF4 /* RecordedGamesPage.swift in Sources */,
 				ECDA74CF2BFE1ECA0014FFF4 /* LeaderboardPage.swift in Sources */,
+				ECDA74DA2C04854A0014FFF4 /* Animal.UI.swift in Sources */,
+				ECDA74DC2C0486010014FFF4 /* Owner.UI.swift in Sources */,
+				ECDA74E22C048FB10014FFF4 /* BoardNode.swift in Sources */,
 				ECDA74CD2BFE16040014FFF4 /* GameScene.swift in Sources */,
 				ECDA74B72BF3B2C10014FFF4 /* SettingsPage.swift in Sources */,
+				ECDA74DE2C0487930014FFF4 /* PiecesNode.swift in Sources */,
+				ECDA74D72C0483230014FFF4 /* GamePage.swift in Sources */,
 				ECDA74882BF3AD500014FFF4 /* DouShouQiApp.swift in Sources */,
 				ECDA74BA2BF3B9A10014FFF4 /* ThemeEnum.swift in Sources */,
 				ECDA74BD2BF3BAD70014FFF4 /* ThemePicker.swift in Sources */,

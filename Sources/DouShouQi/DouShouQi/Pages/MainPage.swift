@@ -10,8 +10,6 @@ import SpriteKit
 
 struct MainPage: View {
     
-    //var gameScene:GameScene = GameScene(size: CGSize(width: 960, height: 740))
-    
     var body: some View {
         NavigationStack{
             Text("DouShouQi")
@@ -25,10 +23,11 @@ struct MainPage: View {
             Spacer()
             
             NavigationLink {
-                //SpriteView(scene: gameScene)
-                SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)))
+                GamePage()
             } label: {
                 Text("Play now")
+                    .padding(.horizontal, 35)
+                    .padding(.vertical, 10)
             }
             .buttonStyle(.borderedProminent)
                 
@@ -38,6 +37,8 @@ struct MainPage: View {
                 LeaderboardPage()
             } label: {
                 Text("Leaderboard")
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
             }
             .buttonStyle(.bordered)
             
@@ -45,6 +46,8 @@ struct MainPage: View {
                 RecordedGamesPage()
             } label: {
                 Text("Recorded games")
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 10)
             }
             .buttonStyle(.bordered)
             
