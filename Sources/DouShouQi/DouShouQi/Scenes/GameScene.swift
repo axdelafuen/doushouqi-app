@@ -11,23 +11,26 @@ import SpriteKit
 class GameScene: SKScene {
         
     private var currentNode: SKNode?
+    private var boardNode:BoardNode!
     
     override init(size: CGSize) {
         super.init(size: size)
         
         self.scaleMode = .aspectFill
-        self.backgroundColor = .white
-        
+        self.backgroundColor = .clear
+
         let ratio = frame.size.width / (SKSpriteNode(imageNamed: "doushouqi_board")).size.width
         
-        let boardNode: BoardNode = BoardNode(ratio:ratio, position: CGPoint(x: frame.size.width / 2, y: frame.size.height / 2))
+        boardNode = BoardNode(ratio:ratio, position: CGPoint(x: frame.midX, y: frame.midY))
         addChild(boardNode)
         
-        let cat = PiecesNode(imageName: "catMeeple", ratio: ratio, color: .cyan, position: CGPoint(x:(frame.size.width / 2), y: (frame.size.height / 2)))
-        addChild(cat)
+        let cat = PiecesNode(imageName: "catMeeple", ratio: ratio, color: .cyan, position: boardNode.tileMap.centerOfTile(atColumn: 0, row: 0))
         
-        let tiger = PiecesNode(imageName: "tigerMeeple", ratio: ratio, color: .yellow, position:CGPoint(x: (frame.size.width / 2) + 180, y: (frame.size.height / 2) + 240))
-        addChild(tiger)
+        boardNode.tileMap.addChild(cat)
+        
+        let tiger = PiecesNode(imageName: "tigerMeeple", ratio: ratio, color: .yellow, position: boardNode.tileMap.centerOfTile(atColumn: 6, row: 8))
+        
+        boardNode.tileMap.addChild(tiger)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,6 +48,7 @@ class GameScene: SKScene {
                 if let nodeName = node.name {
                     if nodeName.contains("Meeple"){
                         self.currentNode = node
+                        self.currentNode!.zPosition += 100
                     }
                 }
             }
@@ -53,12 +57,13 @@ class GameScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first, let node = self.currentNode {
-            let touchLocation = touch.location(in: self)
-            node.position = touchLocation
+            let touchLocation = touch.location(in: node.parent!)
+            node.position = boardNode.tileMap.centerOfTile(atColumn: boardNode.tileMap.tileColumnIndex(fromPosition: touchLocation), row: boardNode.tileMap.tileRowIndex(fromPosition: touchLocation))
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.currentNode?.zPosition -= 100
         self.currentNode = nil
     }
 }

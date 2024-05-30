@@ -10,7 +10,7 @@ import SpriteKit
 
 class PiecesNode : SKNode {
     
-    private var imageNode:SKSpriteNode = SKSpriteNode()
+    public var imageNode:SKSpriteNode = SKSpriteNode()
     private var colorNode:SKShapeNode = SKShapeNode()
     
     init(imageName:String, ratio:CGFloat, color:UIColor, position:CGPoint) {

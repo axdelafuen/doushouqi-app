@@ -15,16 +15,18 @@ class BoardNode : SKNode {
     
     init(ratio:CGFloat, position:CGPoint) {
         super.init()
-        
+
         self.position = position
         self.name = "boardNode"
-        
+
         boardImage = SKSpriteNode(imageNamed: "doushouqi_board")
         boardImage.size.width = boardImage.size.width * ratio
         boardImage.size.height = boardImage.size.height * ratio
         
-        tileMap = SKTileMapNode(tileSet: SKTileSet(), columns: 7, rows: 9, tileSize: CGSize(width: boardImage.size.width / 7, height: boardImage.size.height / 9))
-
+        let tileSet = SKTileSet()
+        
+        tileMap = SKTileMapNode(tileSet: tileSet, columns: 7, rows: 9, tileSize: CGSize(width: ((boardImage.size.width-5)/7), height: ((boardImage.size.height-5)/9)))
+        
         addChild(boardImage)
         addChild(tileMap)
     }

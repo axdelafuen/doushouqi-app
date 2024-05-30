@@ -15,7 +15,7 @@ struct GamePage: View {
     
     
     var body: some View {
-        SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)))
+        SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)), options: [.allowsTransparency])
             .navigationTitle((player1?.name ?? "Player1" ) + " vs " + (player2?.name ?? "Player2"))
     }
         
