@@ -7,24 +7,30 @@
 
 import Foundation
 import SpriteKit
+import DouShouQiModel
 
 class PiecesNode : SKNode {
+    
+    public var animal:Animal!
+    public var player:Owner!
     
     public var imageNode:SKSpriteNode = SKSpriteNode()
     private var colorNode:SKShapeNode = SKShapeNode()
     
-    init(imageName:String, ratio:CGFloat, color:UIColor, position:CGPoint) {
+    init(animal:Animal, ratio:CGFloat, color:UIColor, position:CGPoint, player:Owner) {
         super.init()
 
         self.position = position
-        self.name = imageName
+        self.animal = animal
+        self.player = player
+        self.name = animal.imageName
         
-        imageNode = SKSpriteNode(imageNamed: imageName)
-        imageNode.size.width = 60 * ratio
-        imageNode.size.height = 60 * ratio
+        imageNode = SKSpriteNode(imageNamed: animal.imageName)
+        imageNode.size.width = imageNode.size.width * ratio
+        imageNode.size.height = imageNode.size.height * ratio
         
         colorNode = SKShapeNode(ellipseOf: CGSize(width: imageNode.size.width, height: imageNode.size.height))
-        colorNode.fillColor = color
+        colorNode.fillColor = player.color
         
         addChild(colorNode)
         addChild(imageNode)

@@ -7,32 +7,57 @@
 
 import Foundation
 import SpriteKit
+import DouShouQiModel
 
 class GameScene: SKScene {
         
     private var currentNode: SKNode?
     private var boardNode:BoardNode!
     
-    override init(size: CGSize) {
+    private var game:GameVM!
+    
+    init(size: CGSize, game:GameVM) {
         super.init(size: size)
         
         self.scaleMode = .aspectFill
         self.backgroundColor = .clear
-
-        let ratio = frame.size.width / (SKSpriteNode(imageNamed: "doushouqi_board")).size.width
+        self.game = game
         
-        boardNode = BoardNode(ratio:ratio, position: CGPoint(x: frame.midX, y: frame.midY))
+        let ratio = frame.size.width / (SKSpriteNode(imageNamed: "board")).size.width
+        
+        boardNode = BoardNode(ratio:ratio, position: CGPoint(x: frame.midX, y: frame.midY), game:self.game.game )
         addChild(boardNode)
         
-        let cat = PiecesNode(imageName: "catMeeple", ratio: ratio, color: .cyan, position: boardNode.tileMap.centerOfTile(atColumn: 0, row: 0))
-        
-        boardNode.tileMap.addChild(cat)
-        
-        let tiger = PiecesNode(imageName: "tigerMeeple", ratio: ratio, color: .yellow, position: boardNode.tileMap.centerOfTile(atColumn: 6, row: 8))
-        
-        boardNode.tileMap.addChild(tiger)
+        for rowIndex in 0...(game.game.board.grid.count-1) {
+            for colIndex in 0...(game.game.board.grid[0].count-1) {
+                if let piece = game.game.board.grid[rowIndex][colIndex].piece {
+                    boardNode.tileMap.addChild(
+                        PiecesNode(animal: piece.animal, ratio: ratio, color: piece.owner.color, position: boardNode.tileMap.centerOfTile(atColumn: colIndex, row: rowIndex), player:piece.owner)
+                    )
+                }
+            }
+        }
     }
     
+    /*
+     
+     let originLoc = self.boardNode.tileMap.centerOfTile(atColumn: move.columnOrigin, row: move.columnDestination)
+     let destLoc = self.boardNode.tileMap.centerOfTile(atColumn: move.columnDestination, row: move.rowDestination)
+     
+     let movedNode = self.nodes(at: originLoc)
+     
+     for node in movedNode.reversed() {
+         if let nodeName = node.name {
+             if nodeName.contains("Meeple"){
+                 let col:Int = self.boardNode.tileMap.tileColumnIndex(fromPosition: destLoc)
+                 let row:Int = self.boardNode.tileMap.tileRowIndex(fromPosition: destLoc)
+                 
+                 node.position = self.boardNode.tileMap.centerOfTile(atColumn: (col > 6 ? 6 : col), row: (row > 8 ? 8 : row))
+             }
+         }
+     }
+     */
+            
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -58,7 +83,11 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first, let node = self.currentNode {
             let touchLocation = touch.location(in: node.parent!)
-            node.position = boardNode.tileMap.centerOfTile(atColumn: boardNode.tileMap.tileColumnIndex(fromPosition: touchLocation), row: boardNode.tileMap.tileRowIndex(fromPosition: touchLocation))
+            
+            let col:Int = boardNode.tileMap.tileColumnIndex(fromPosition: touchLocation)
+            let row:Int = boardNode.tileMap.tileRowIndex(fromPosition: touchLocation)
+            
+            node.position = boardNode.tileMap.centerOfTile(atColumn: (col > 6 ? 6 : col), row: (row > 8 ? 8 : row))
         }
     }
     

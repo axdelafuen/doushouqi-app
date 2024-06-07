@@ -7,25 +7,26 @@
 
 import Foundation
 import SpriteKit
+import DouShouQiModel
 
 class BoardNode : SKNode {
     
-    private var boardImage:SKSpriteNode = SKSpriteNode()
-    public var tileMap:SKTileMapNode = SKTileMapNode()
+    private var boardImage:SKSpriteNode!
+    public var tileMap:SKTileMapNode!
     
-    init(ratio:CGFloat, position:CGPoint) {
+    init(ratio:CGFloat, position:CGPoint, game:Game) {
         super.init()
-
+        
         self.position = position
         self.name = "boardNode"
 
-        boardImage = SKSpriteNode(imageNamed: "doushouqi_board")
+        boardImage = SKSpriteNode(imageNamed: "board")
         boardImage.size.width = boardImage.size.width * ratio
         boardImage.size.height = boardImage.size.height * ratio
         
         let tileSet = SKTileSet()
         
-        tileMap = SKTileMapNode(tileSet: tileSet, columns: 7, rows: 9, tileSize: CGSize(width: ((boardImage.size.width-5)/7), height: ((boardImage.size.height-5)/9)))
+        tileMap = SKTileMapNode(tileSet: tileSet, columns: game.board.nbColumns, rows: game.board.nbRows, tileSize: CGSize(width: ((boardImage.size.width*0.95)/7), height: ((boardImage.size.height*0.96)/9)))
         
         addChild(boardImage)
         addChild(tileMap)

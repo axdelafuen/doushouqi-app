@@ -23,7 +23,11 @@ struct MainPage: View {
             Spacer()
             
             NavigationLink {
-                GamePage()
+                if let v = try? GamePage() {
+                    v
+                } else {
+                    ErrorPage()
+                }
             } label: {
                 Text("Play now")
                     .padding(.horizontal, 35)
@@ -55,7 +59,8 @@ struct MainPage: View {
         }
     }
 }
-
+/*
 #Preview {
     MainPage()
 }
+*/

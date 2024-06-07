@@ -10,17 +10,36 @@ import _SpriteKit_SwiftUI
 import DouShouQiModel
 
 struct GamePage: View {
-    let player1 = RandomPlayer(withName: "Illidan", andId: .player1)
-    let player2 = RandomPlayer(withName: "Sylvanas", andId: .player2)
     
+    @ObservedObject var game: GameVM
+    
+    init() throws {
+        self.game = try GameVM()
+    }
     
     var body: some View {
-        SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)), options: [.allowsTransparency])
-            .navigationTitle((player1?.name ?? "Player1" ) + " vs " + (player2?.name ?? "Player2"))
-    }
+        SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), game: self.game), options: [.allowsTransparency])
+            .navigationTitle((self.game.player1?.name ?? "Player1" ) + " vs " + (self.game.player2?.name ?? "Player2"))
         
+        Button(action: {
+            Task {
+                 try await startGame()
+                }
+        }){
+            Text("test")
+        }
+    }
+   
+    func startGame() async throws {
+        do{
+            try await game.game.start()
+        }catch{
+            
+        }
+    }
 }
-
+/*
 #Preview {
     GamePage()
 }
+*/

@@ -7,16 +7,17 @@
 
 import Foundation
 import DouShouQiModel
+import UIKit
 
 extension Owner {
-    public var color: String {
+    public var color: UIColor {
         switch self {
         case .player1:
-            return "🟡"
+            return .systemCyan
         case .player2:
-            return "🔴"
+            return .systemYellow
         default:
-            return "  "
+            return .clear
         }
     }
 }
