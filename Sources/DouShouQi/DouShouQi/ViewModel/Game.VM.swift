@@ -12,13 +12,19 @@ class GameVM : ObservableObject {
     let player1 = RandomPlayer(withName: "Illidan", andId: .player1)
     let player2 = RandomPlayer(withName: "Sylvanas", andId: .player2)
     
-    var game:Game
+    @Published var game:Game!
     
     init(game:Game) {
         self.game = game
     }
     
-    init() throws {
-        self.game = try Game(withRules: ClassicRules(), andPlayer1: player1!, andPlayer2: player2!)
+    init() {
+        do {
+            self.game = try Game(withRules: ClassicRules(), andPlayer1: player1!, andPlayer2: player2!)
+        }
+        catch{
+            print(error)
+        }
     }
+    
 }

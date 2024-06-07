@@ -29,6 +29,11 @@
 		ECDA74E22C048FB10014FFF4 /* BoardNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74E12C048FB10014FFF4 /* BoardNode.swift */; };
 		ECDA74EB2C0884A80014FFF4 /* Game.VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74EA2C0884A80014FFF4 /* Game.VM.swift */; };
 		ECDA74ED2C0DE4420014FFF4 /* ErrorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74EC2C0DE4420014FFF4 /* ErrorPage.swift */; };
+		ECDA74EF2C132AB30014FFF4 /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74EE2C132AB30014FFF4 /* GameMenu.swift */; };
+		ECDA74F62C13385F0014FFF4 /* Animal.Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74F12C13385F0014FFF4 /* Animal.Symbol.swift */; };
+		ECDA74F72C13385F0014FFF4 /* Board.Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74F22C13385F0014FFF4 /* Board.Description.swift */; };
+		ECDA74F92C13385F0014FFF4 /* Owner.Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74F42C13385F0014FFF4 /* Owner.Symbol.swift */; };
+		ECDA74FA2C13385F0014FFF4 /* CellType.Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74F52C13385F0014FFF4 /* CellType.Symbol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +93,11 @@
 		ECDA74E12C048FB10014FFF4 /* BoardNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardNode.swift; sourceTree = "<group>"; };
 		ECDA74EA2C0884A80014FFF4 /* Game.VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.VM.swift; sourceTree = "<group>"; };
 		ECDA74EC2C0DE4420014FFF4 /* ErrorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPage.swift; sourceTree = "<group>"; };
+		ECDA74EE2C132AB30014FFF4 /* GameMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
+		ECDA74F12C13385F0014FFF4 /* Animal.Symbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Animal.Symbol.swift; path = "../../../../../../Downloads/swiftui_arkit_2024 5/XCFramework/DSQ_CLI/DSQ_CLI/Animal.Symbol.swift"; sourceTree = "<group>"; };
+		ECDA74F22C13385F0014FFF4 /* Board.Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Board.Description.swift; path = "../../../../../../Downloads/swiftui_arkit_2024 5/XCFramework/DSQ_CLI/DSQ_CLI/Board.Description.swift"; sourceTree = "<group>"; };
+		ECDA74F42C13385F0014FFF4 /* Owner.Symbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Owner.Symbol.swift; path = "../../../../../../Downloads/swiftui_arkit_2024 5/XCFramework/DSQ_CLI/DSQ_CLI/Owner.Symbol.swift"; sourceTree = "<group>"; };
+		ECDA74F52C13385F0014FFF4 /* CellType.Symbol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellType.Symbol.swift; path = "../../../../../../Downloads/swiftui_arkit_2024 5/XCFramework/DSQ_CLI/DSQ_CLI/CellType.Symbol.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +150,7 @@
 		ECDA74862BF3AD500014FFF4 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				ECDA74F02C1338240014FFF4 /* DebugCLI */,
 				ECDA74E92C0884970014FFF4 /* ViewModel */,
 				ECDA74C92BFE14C80014FFF4 /* Scenes */,
 				ECDA74BB2BF3BAC40014FFF4 /* Pages */,
@@ -196,6 +207,7 @@
 				ECDA74CE2BFE1ECA0014FFF4 /* LeaderboardPage.swift */,
 				ECDA74D02BFE1EE40014FFF4 /* RecordedGamesPage.swift */,
 				ECDA74EC2C0DE4420014FFF4 /* ErrorPage.swift */,
+				ECDA74EE2C132AB30014FFF4 /* GameMenu.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -225,6 +237,17 @@
 				ECDA74EA2C0884A80014FFF4 /* Game.VM.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECDA74F02C1338240014FFF4 /* DebugCLI */ = {
+			isa = PBXGroup;
+			children = (
+				ECDA74F12C13385F0014FFF4 /* Animal.Symbol.swift */,
+				ECDA74F22C13385F0014FFF4 /* Board.Description.swift */,
+				ECDA74F52C13385F0014FFF4 /* CellType.Symbol.swift */,
+				ECDA74F42C13385F0014FFF4 /* Owner.Symbol.swift */,
+			);
+			path = DebugCLI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,14 +388,19 @@
 				ECDA74E22C048FB10014FFF4 /* BoardNode.swift in Sources */,
 				ECDA74ED2C0DE4420014FFF4 /* ErrorPage.swift in Sources */,
 				ECDA74CD2BFE16040014FFF4 /* GameScene.swift in Sources */,
+				ECDA74F92C13385F0014FFF4 /* Owner.Symbol.swift in Sources */,
 				ECDA74B72BF3B2C10014FFF4 /* SettingsPage.swift in Sources */,
+				ECDA74F72C13385F0014FFF4 /* Board.Description.swift in Sources */,
+				ECDA74EF2C132AB30014FFF4 /* GameMenu.swift in Sources */,
 				ECDA74DE2C0487930014FFF4 /* PiecesNode.swift in Sources */,
 				ECDA74D72C0483230014FFF4 /* GamePage.swift in Sources */,
 				ECDA74882BF3AD500014FFF4 /* DouShouQiApp.swift in Sources */,
 				ECDA74BA2BF3B9A10014FFF4 /* ThemeEnum.swift in Sources */,
+				ECDA74F62C13385F0014FFF4 /* Animal.Symbol.swift in Sources */,
 				ECDA74BD2BF3BAD70014FFF4 /* ThemePicker.swift in Sources */,
 				ECDA74EB2C0884A80014FFF4 /* Game.VM.swift in Sources */,
 				ECDA74B22BF3AD8D0014FFF4 /* MainPage.swift in Sources */,
+				ECDA74FA2C13385F0014FFF4 /* CellType.Symbol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
