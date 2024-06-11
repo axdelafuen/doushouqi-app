@@ -11,7 +11,7 @@ import SpriteKit
 class PiecesNode : SKNode {
     
     public var imageNode:SKSpriteNode = SKSpriteNode()
-    private var colorNode:SKShapeNode = SKShapeNode()
+    public var colorNode:SKShapeNode = SKShapeNode()
     
     init(ratio:CGFloat, imageName:String, color:UIColor, position:CGPoint) {
         super.init()

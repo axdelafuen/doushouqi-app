@@ -8,28 +8,41 @@
 import SwiftUI
 
 struct GameMenu: View {
+    @State var player1Name: String = ""
+    @State var player2Name: String = ""
+    
     var body: some View {
-                
+        
         NavigationStack{
             Spacer()
-            Text("Game mode:")
-                .bold()
-                .font(.title)
+            Spacer()
+            
+            TextField("Player1 (empty = bot)", text: $player1Name)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal, 35)
+                .padding(.vertical, 10)
+                
+            TextField("Player2 (empty = bot)", text: $player2Name)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal, 35)
+                .padding(.vertical, 10)
+            
             Spacer()
             
             NavigationLink {
-                GamePage()
+                GamePage(player1Name: $player1Name.wrappedValue, player2Name: $player2Name.wrappedValue)
             } label: {
-                Text("Random vs Random")
+                Text("Start game")
                     .padding(.horizontal, 35)
                     .padding(.vertical, 10)
             }
             .buttonStyle(.borderedProminent)
                 
             Spacer()
-            
+            Spacer()
             Spacer()
         }
+        .navigationTitle("Game menu")
     }
 }
 

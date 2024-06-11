@@ -9,22 +9,15 @@ import Foundation
 import DouShouQiModel
 
 class GameVM : ObservableObject {
-    let player1 = RandomPlayer(withName: "Illidan", andId: .player1)
-    let player2 = RandomPlayer(withName: "Sylvanas", andId: .player2)
     
     @Published var game:Game!
     
-    init(game:Game) {
+    let player1:Player!
+    let player2:Player!
+    
+    init(game:Game, player1:Player, player2:Player) {
         self.game = game
+        self.player1 = player1
+        self.player2 = player2
     }
-    
-    init() {
-        do {
-            self.game = try Game(withRules: ClassicRules(), andPlayer1: player1!, andPlayer2: player2!)
-        }
-        catch{
-            print(error)
-        }
-    }
-    
 }
