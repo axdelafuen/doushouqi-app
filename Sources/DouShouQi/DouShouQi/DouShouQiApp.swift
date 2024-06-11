@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct DouShouQiApp: App {
-    @AppStorage("selectedTheme") private var selectedTheme: AppTheme = .system
+    @AppStorage("selectedTheme") public var selectedTheme: AppTheme = .system
     
     var body: some Scene {
         WindowGroup {

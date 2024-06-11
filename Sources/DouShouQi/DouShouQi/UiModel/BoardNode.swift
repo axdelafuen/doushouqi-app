@@ -10,7 +10,7 @@ import SpriteKit
 
 class BoardNode : SKNode {
     
-    private var boardImage:SKSpriteNode!
+    public var boardImage:SKSpriteNode!
     public var tileMap:SKTileMapNode!
     
     init(ratio:CGFloat, position:CGPoint, nbCols:Int, nbRows:Int) {

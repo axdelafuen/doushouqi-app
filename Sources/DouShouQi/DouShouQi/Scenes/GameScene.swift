@@ -11,11 +11,11 @@ import DouShouQiModel
 import SwiftUI
 
 class GameScene: SKScene {
-    
+   
     private var gameVM:GameVM!
     
     private var currentNode: SKNode?
-    private var currentPlayer: Player!
+    @Binding var currentPlayer: Player
     private var moveContinuation: CheckedContinuation<Move, Never>?
     
     private var boardNode:BoardNode!
@@ -25,8 +25,9 @@ class GameScene: SKScene {
     private var colDest:Int!
     private var rowDest:Int!
     
-    init(size:CGSize, gameVM:GameVM) {
+    init(size:CGSize, gameVM:GameVM, currentPlayer: Binding<Player>) {
         self.gameVM = gameVM
+        self._currentPlayer = currentPlayer
         super.init(size: size)
     }
     
@@ -46,18 +47,15 @@ class GameScene: SKScene {
         setUpBoard(board:gameVM.game.board, ratio: ratio)
         
         gameVM.game.addBoardChangedListener({board in
-            print(board)
+            //print(board)
         })
         
         gameVM.game.addMoveChosenCallbacksListener({ board, move, player in
             self.executeMove(move: move, player: player)
         })
         
-        gameVM.game.addGameStartedListener {
-            print($0)
-            print("**************************************")
-            print("     ==>> 🎉 GAME STARTS! 🎉 <<==     ")
-            print("**************************************")
+        gameVM.game.addGameStartedListener { board in
+            self.startText(textValue: "🎉 GAME STARTS! 🎉")
         }
         
         gameVM.game.addPlayerNotifiedListener({board, player in
@@ -66,7 +64,6 @@ class GameScene: SKScene {
             if player is HumanPlayer {
                 Task {
                     let move = await self.awaitPlayerMove()
-                    print("DEBUG 1 : ",move)
                     do {
                         try await (player as! HumanPlayer).chooseMove(move)
                     } catch {
@@ -79,29 +76,34 @@ class GameScene: SKScene {
         })
         
         gameVM.game.addGameOverListener { board, result, player in
+            var textResult: String = ""
             switch(result){
             case .notFinished:
                 print("⏳ Game is not over yet!")
-            case .winner(winner: let o, reason: let r):
-                print(board)
-                print("**************************************")
-                print("Game Over!!!")
-                print("🥇🏆 and the winner is... \(o == .player1 ? "🟡" : "🔴") \(player?.name ?? "")!")
+            case .winner(winner: _, reason: let r):
+                print("Game over")
+                textResult += "🥇🏆 and the winner is... \(player?.name ?? "")!\n"
                 switch(r){
                 case .denReached:
-                    print("🪺 the opponent's den has been reached.")
+                    textResult += "🪺 the opponent's den has been reached."
                 case .noMorePieces:
-                    print("🐭🐱🐯🦁🐘 all the opponent's animals have been eaten...")
+                    textResult += "🐭🐱🐯🦁🐘 all the opponent's animals have been eaten..."
                 case .noMovesLeft:
-                    print("⛔️ the opponent can not move any piece!")
+                    textResult += "⛔️ the opponent can not move any piece!"
                 case .tooManyOccurences:
-                    print("🔄 the opponent seem to like this situation... but enough is enough. Sorry...")
+                    textResult += "🔄 the opponent seem to like this situation...\n but enough is enough. Sorry..."
+                @unknown default:
+                    textResult += "no reason :("
                 }
-                print("**************************************")
+                self.endText(textValue: textResult)
             default:
                 break
             }
         }
+        
+        gameVM.game.addGameChangedListener({ game async in
+            //try! await Persistance.saveGame(withName: "game.json", andGame: game)
+        })
         
         Task{
             do{
@@ -125,6 +127,9 @@ class GameScene: SKScene {
                         
                         colOrigin = boardNode.tileMap.tileColumnIndex(fromPosition: node.position)
                         rowOrigin = boardNode.tileMap.tileRowIndex(fromPosition: node.position)
+                        
+                        colDest = boardNode.tileMap.tileColumnIndex(fromPosition: node.position)
+                        rowDest = boardNode.tileMap.tileRowIndex(fromPosition: node.position)
                     }
                 }
             }
@@ -143,6 +148,10 @@ class GameScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if ( colOrigin == colDest && rowOrigin == rowDest) {
+            return
+        }
+        
         let move:Move = Move(of: currentPlayer.id , fromRow: rowOrigin, andFromColumn: colOrigin, toRow: rowDest, andToColumn: colDest)
         
         if isMoveValid(move: move, board: gameVM.game.board) {
@@ -150,7 +159,7 @@ class GameScene: SKScene {
             moveContinuation?.resume(returning: move)
         }else{
             print("move: FAILED")
-            //show bad move
+            showForbiddenMoveText()
             roleBackMove(move: move, player: currentPlayer)
         }
         
@@ -227,5 +236,92 @@ class GameScene: SKScene {
     
     func isMoveValid(move: Move, board: Board) -> Bool {
         return gameVM.game.rules.isMoveValid(onBoard: board, withMove: move)
+    }
+    
+    func startText(textValue: String) {
+        let splashText = SKLabelNode(text: textValue)
+        splashText.fontName = "AvenirNext-Bold"
+        splashText.fontSize = 30
+        splashText.fontColor = SKColor.white
+        
+        let backgroundNode = SKSpriteNode(color: .black , size: boardNode.boardImage.size)
+        backgroundNode.alpha = 0.7
+
+        boardNode.addChild(backgroundNode)
+        boardNode.addChild(splashText)
+        
+        let fadeDuration = 2.5
+                
+        let fadeOutBackground = SKAction.fadeOut(withDuration: fadeDuration)
+        let fadeOutText = SKAction.fadeOut(withDuration: fadeDuration)
+        
+        backgroundNode.run(fadeOutBackground) {
+            backgroundNode.removeFromParent()
+        }
+        
+        splashText.run(fadeOutText) {
+            splashText.removeFromParent()
+        }
+    }
+    
+    func endText(textValue: String) {
+        let splashText = SKLabelNode(text: textValue)
+        splashText.fontName = "AvenirNext-Bold"
+        splashText.fontSize = 18
+        splashText.fontColor = SKColor.white
+        splashText.alpha = 0
+        splashText.numberOfLines = 0
+        
+        let backgroundNode = SKSpriteNode(color: .black , size: boardNode.boardImage.size)
+        backgroundNode.alpha = 0
+        
+        let fadeDuration = 2.0
+                
+        let fadeInBackground = SKAction.fadeIn(withDuration: fadeDuration)
+        let fadeInText = SKAction.fadeIn(withDuration: fadeDuration)
+        
+        self.boardNode.addChild(backgroundNode)
+        self.boardNode.addChild(splashText)
+        
+        backgroundNode.run(fadeInBackground) {
+            backgroundNode.alpha = 0.7
+        }
+        
+        splashText.run(fadeInText) {
+            splashText.alpha = 1
+        }
+    }
+    
+    func showForbiddenMoveText() {
+        let forbiddenText = SKLabelNode(text: "Invalid move")
+        forbiddenText.fontName = "AvenirNext-Bold"
+        forbiddenText.fontSize = 20
+        forbiddenText.fontColor = SKColor.white
+        forbiddenText.alpha = 0
+        forbiddenText.numberOfLines = 0
+        forbiddenText.horizontalAlignmentMode = .center
+        forbiddenText.verticalAlignmentMode = .center
+        
+        let fadeInAction = SKAction.fadeIn(withDuration: 1.0)
+        let fadeOutAction = SKAction.fadeOut(withDuration: 1.0)
+        
+        let backgroundNode = SKSpriteNode(color: .black , size: CGSize(width: 150, height: 50))
+        backgroundNode.alpha = 0.5
+        
+        boardNode.addChild(backgroundNode)
+        boardNode.addChild(forbiddenText)
+
+        let sequence = SKAction.sequence([
+            fadeInAction,
+            SKAction.wait(forDuration: 1.0),
+            fadeOutAction
+        ])
+            
+        forbiddenText.run(sequence) {
+            forbiddenText.removeFromParent()
+        }
+        backgroundNode.run(sequence) {
+            backgroundNode.removeFromParent()
+        }
     }
 }

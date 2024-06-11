@@ -12,8 +12,8 @@ class GameVM : ObservableObject {
     
     @Published var game:Game!
     
-    let player1:Player!
-    let player2:Player!
+    @Published var player1:Player!
+    @Published var player2:Player!
     
     init(game:Game, player1:Player, player2:Player) {
         self.game = game

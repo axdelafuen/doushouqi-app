@@ -11,15 +11,12 @@ import DouShouQiModel
 
 struct GamePage: View {
     
-    @StateObject var gameVM: GameVM
-
+    @ObservedObject var gameVM: GameVM
+    @State private var currentPlayer: Player
     
     init(player1Name: String, player2Name: String) {
         var player1:Player
         var player2:Player
-        
-        print("p1 name: ", player1Name)
-        print("p2 name: ", player2Name)
         
         if player1Name != ""{
             player1 = HumanPlayer(withName: player1Name, andId: .player1)!
@@ -35,16 +32,45 @@ struct GamePage: View {
         }
         
         do {
+            currentPlayer = player1
             let game = try Game(withRules: ClassicRules(), andPlayer1: player1, andPlayer2: player2)
-            _gameVM = StateObject(wrappedValue: GameVM(game: game, player1: player1, player2: player2))
+            _gameVM = ObservedObject(wrappedValue: GameVM(game: game, player1: player1, player2: player2))
         }catch {
             fatalError("ERROR GAME VM CREATION")
         }
     }
     
     var body: some View {
-        SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), gameVM: self.gameVM), options: [.allowsTransparency])
-            .navigationTitle(self.gameVM.player1.name + " vs " + self.gameVM.player2.name)
+        ZStack{
+            VStack {
+                LinearGradient(gradient: Gradient(colors: [Color.clear, Color.yellow, Color.yellow]), startPoint: .top, endPoint: .bottom)
+                    .overlay(
+                        VStack{
+                            Text(self.gameVM.player2.name)
+                                .padding()
+                                .font(.largeTitle)
+                            Text("It's your turn")
+                                .foregroundColor(.gray)
+                                .opacity((currentPlayer.id == gameVM.player2.id ) ? 1 : 0)
+                        },
+                        alignment: .top
+                    )
+                
+                LinearGradient(gradient: Gradient(colors: [Color.clear, Color.cyan, Color.cyan]), startPoint: .bottom, endPoint: .top)
+                    .overlay(
+                        VStack{
+                            Text("It's your turn")
+                                .foregroundColor(.gray)
+                                .opacity((currentPlayer.id == gameVM.player1.id ) ? 1 : 0)
+                            Text(self.gameVM.player1.name)
+                                .padding()
+                                .font(.largeTitle)
+                        },
+                        alignment: .bottom
+                    )
+            }
+            SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), gameVM: self.gameVM, currentPlayer: $currentPlayer), options: [.allowsTransparency])
+        }
     }
 }
 /*
