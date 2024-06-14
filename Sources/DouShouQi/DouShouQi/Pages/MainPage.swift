@@ -23,7 +23,7 @@ struct MainPage: View {
             Spacer()
             
             NavigationLink {
-                GameMenu()
+                GameMenuPage()
             } label: {
                 Text("Play now")
                     .padding(.horizontal, 35)

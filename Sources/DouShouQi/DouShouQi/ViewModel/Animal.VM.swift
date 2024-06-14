@@ -31,4 +31,27 @@ extension Animal {
             return ""
         }
     }
+    
+    public var objectName: String{
+        switch self{
+        case .rat:
+            return "rat"
+        case .cat:
+            return "cat"
+        case .dog:
+            return "dog"
+        case .wolf:
+            return "wolf"
+        case .leopard:
+            return "leopard"
+        case .tiger:
+            return "tiger"
+        case .lion:
+            return "lion"
+        case .elephant:
+            return "elephant"
+        @unknown default:
+            return ""
+        }
+    }
 }
