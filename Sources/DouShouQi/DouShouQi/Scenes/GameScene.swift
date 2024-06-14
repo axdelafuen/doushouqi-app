@@ -16,6 +16,8 @@ class GameScene: SKScene {
     
     private var currentNode: SKNode?
     @Binding var currentPlayer: Player
+    @Binding var player1win: Bool
+    @Binding var player2win: Bool
     private var moveContinuation: CheckedContinuation<Move, Never>?
     
     private var boardNode:BoardNode!
@@ -25,9 +27,16 @@ class GameScene: SKScene {
     private var colDest:Int!
     private var rowDest:Int!
     
-    init(size:CGSize, gameVM:GameVM, currentPlayer: Binding<Player>) {
+    private let second: Double = 1000000
+    
+    init(size:CGSize, gameVM:GameVM, currentPlayer: Binding<Player>, player1win: Binding<Bool>, player2win: Binding<Bool>) {
         self.gameVM = gameVM
+        self.gameVM.restartGame()
+        
         self._currentPlayer = currentPlayer
+        self._player1win = player1win
+        self._player2win = player2win
+        
         super.init(size: size)
     }
     
@@ -45,17 +54,19 @@ class GameScene: SKScene {
         addChild(boardNode)
         
         setUpBoard(board:gameVM.game.board, ratio: ratio)
-        
-        gameVM.game.addBoardChangedListener({board in
-            //print(board)
-        })
-        
-        gameVM.game.addMoveChosenCallbacksListener({ board, move, player in
-            self.executeMove(move: move, player: player)
-        })
-        
+
         gameVM.game.addGameStartedListener { board in
             self.startText(textValue: "🎉 GAME STARTS! 🎉")
+        }
+        
+        gameVM.game.addInvalidMoveCallbacksListener { _, move, player, result in
+            if result {
+                self.checkDyingPieces(point: self.boardNode.tileMap.centerOfTile(atColumn: move.columnDestination, row: move.rowDestination), playing: player)
+                self.executeMove(move: move, player: player)
+                return
+            }
+            self.forbiddenMoveText()
+            self.roleBackMove(move: move, player: player)
         }
         
         gameVM.game.addPlayerNotifiedListener({board, player in
@@ -71,6 +82,7 @@ class GameScene: SKScene {
                     }
                 }
             } else {
+                usleep(useconds_t(0.2 * self.second))
                 _ = try! await player.chooseMove(in: board, with: self.gameVM.game.rules)
             }
         })
@@ -82,6 +94,7 @@ class GameScene: SKScene {
                 print("⏳ Game is not over yet!")
             case .winner(winner: _, reason: let r):
                 print("Game over")
+                print(board)
                 textResult += "🥇🏆 and the winner is... \(player?.name ?? "")!\n"
                 switch(r){
                 case .denReached:
@@ -95,6 +108,14 @@ class GameScene: SKScene {
                 @unknown default:
                     textResult += "no reason :("
                 }
+                if let p = player {
+                    if p.id == self.gameVM.player1.id {
+                        self.player1win = true
+                    }
+                    else {
+                        self.player2win = true
+                    }
+                }
                 self.endText(textValue: textResult)
             default:
                 break
@@ -104,10 +125,11 @@ class GameScene: SKScene {
         gameVM.game.addGameChangedListener({ game async in
             //try! await Persistance.saveGame(withName: "game.json", andGame: game)
         })
-        
-        Task{
-            do{
-                try await gameVM.game.start()
+        if !gameVM.game.isOver {
+            Task{
+                do{
+                    try await gameVM.game.start()
+                }
             }
         }
     }
@@ -154,14 +176,7 @@ class GameScene: SKScene {
         
         let move:Move = Move(of: currentPlayer.id , fromRow: rowOrigin, andFromColumn: colOrigin, toRow: rowDest, andToColumn: colDest)
         
-        if isMoveValid(move: move, board: gameVM.game.board) {
-            print("move: OK")
-            moveContinuation?.resume(returning: move)
-        }else{
-            print("move: FAILED")
-            showForbiddenMoveText()
-            roleBackMove(move: move, player: currentPlayer)
-        }
+        moveContinuation?.resume(returning: move)
         
         self.currentNode?.zPosition -= 100
     }
@@ -171,7 +186,7 @@ class GameScene: SKScene {
             for colIndex in 0...(board.nbColumns - 1) {
                 if let piece = board.grid[rowIndex][colIndex].piece {
                     boardNode.tileMap.addChild(
-                        PiecesNode(ratio: ratio,imageName: piece.animal.imageName, color: piece.owner.color, position: boardNode.tileMap.centerOfTile(atColumn: colIndex, row: rowIndex))
+                        PiecesNode(ratio: ratio,imageName: piece.animal.imageName, owner: piece.owner, position: boardNode.tileMap.centerOfTile(atColumn: colIndex, row: rowIndex))
                     )
                 }
             }
@@ -194,11 +209,9 @@ class GameScene: SKScene {
         for node in movedNode.reversed() {
             if let pieceNode: PiecesNode = node as? PiecesNode {
                 if let nodeName = pieceNode.name {
-                    if nodeName.contains("Meeple"){
+                    if nodeName.contains("Meeple") {
                         let col:Int = boardNode.tileMap.tileColumnIndex(fromPosition: destLoc)
                         let row:Int = boardNode.tileMap.tileRowIndex(fromPosition: destLoc)
-                        
-                        checkDyingPieces(point: destLoc)
                         
                         node.position = boardNode.tileMap.centerOfTile(atColumn: (col > 6 ? 6 : col), row: (row > 8 ? 8 : row))
                     }
@@ -220,13 +233,13 @@ class GameScene: SKScene {
         currentNode = nil
     }
     
-    func checkDyingPieces(point:CGPoint) {
+    func checkDyingPieces(point:CGPoint, playing: Player) {
         let checkNode = boardNode.tileMap.nodes(at: point)
         
         for node in checkNode.reversed() {
             if let pieceNode: PiecesNode = node as? PiecesNode {
                 if let nodeName = pieceNode.name {
-                    if nodeName.contains("Meeple"){
+                    if nodeName.contains("Meeple")  && pieceNode.getOwner() != playing.id {
                         node.removeFromParent()
                     }
                 }
@@ -239,6 +252,7 @@ class GameScene: SKScene {
     }
     
     func startText(textValue: String) {
+        self.scene?.isUserInteractionEnabled = false
         let splashText = SKLabelNode(text: textValue)
         splashText.fontName = "AvenirNext-Bold"
         splashText.fontSize = 30
@@ -250,7 +264,7 @@ class GameScene: SKScene {
         boardNode.addChild(backgroundNode)
         boardNode.addChild(splashText)
         
-        let fadeDuration = 2.5
+        let fadeDuration:Double = 1.5
                 
         let fadeOutBackground = SKAction.fadeOut(withDuration: fadeDuration)
         let fadeOutText = SKAction.fadeOut(withDuration: fadeDuration)
@@ -262,6 +276,8 @@ class GameScene: SKScene {
         splashText.run(fadeOutText) {
             splashText.removeFromParent()
         }
+        usleep(useconds_t(fadeDuration * self.second))
+        self.scene?.isUserInteractionEnabled = true
     }
     
     func endText(textValue: String) {
@@ -271,13 +287,15 @@ class GameScene: SKScene {
         splashText.fontColor = SKColor.white
         splashText.alpha = 0
         splashText.numberOfLines = 0
+        splashText.zPosition = 111
         
         let backgroundNode = SKSpriteNode(color: .black , size: boardNode.boardImage.size)
         backgroundNode.alpha = 0
+        backgroundNode.zPosition = 110
         
-        let fadeDuration = 2.0
+        let fadeDuration = 1.5
                 
-        let fadeInBackground = SKAction.fadeIn(withDuration: fadeDuration)
+        let fadeInBackground = SKAction.fadeAlpha(to: 0.7, duration: fadeDuration)
         let fadeInText = SKAction.fadeIn(withDuration: fadeDuration)
         
         self.boardNode.addChild(backgroundNode)
@@ -290,9 +308,10 @@ class GameScene: SKScene {
         splashText.run(fadeInText) {
             splashText.alpha = 1
         }
+        self.scene?.isUserInteractionEnabled = false
     }
     
-    func showForbiddenMoveText() {
+    func forbiddenMoveText() {
         let forbiddenText = SKLabelNode(text: "Invalid move")
         forbiddenText.fontName = "AvenirNext-Bold"
         forbiddenText.fontSize = 20
@@ -302,8 +321,10 @@ class GameScene: SKScene {
         forbiddenText.horizontalAlignmentMode = .center
         forbiddenText.verticalAlignmentMode = .center
         
-        let fadeInAction = SKAction.fadeIn(withDuration: 1.0)
-        let fadeOutAction = SKAction.fadeOut(withDuration: 1.0)
+        let fadeDuration = 0.5
+        
+        let fadeAlpha = SKAction.fadeAlpha(to: 0.5, duration: fadeDuration)
+        let fadeOutAction = SKAction.fadeOut(withDuration: fadeDuration)
         
         let backgroundNode = SKSpriteNode(color: .black , size: CGSize(width: 150, height: 50))
         backgroundNode.alpha = 0.5
@@ -311,16 +332,22 @@ class GameScene: SKScene {
         boardNode.addChild(backgroundNode)
         boardNode.addChild(forbiddenText)
 
-        let sequence = SKAction.sequence([
-            fadeInAction,
-            SKAction.wait(forDuration: 1.0),
+        let sequenceIn = SKAction.sequence([
+            fadeAlpha,
+            SKAction.wait(forDuration: 0.25),
+            fadeOutAction
+        ])
+        
+        let sequenceAlpha = SKAction.sequence([
+            fadeAlpha,
+            SKAction.wait(forDuration: 0.25),
             fadeOutAction
         ])
             
-        forbiddenText.run(sequence) {
+        forbiddenText.run(sequenceIn) {
             forbiddenText.removeFromParent()
         }
-        backgroundNode.run(sequence) {
+        backgroundNode.run(sequenceAlpha) {
             backgroundNode.removeFromParent()
         }
     }

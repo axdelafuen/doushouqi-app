@@ -13,6 +13,8 @@ struct GamePage: View {
     
     @ObservedObject var gameVM: GameVM
     @State private var currentPlayer: Player
+    @State private var player1Win: Bool = false
+    @State private var player2Win: Bool = false
     
     init(player1Name: String, player2Name: String) {
         var player1:Player
@@ -43,7 +45,7 @@ struct GamePage: View {
     var body: some View {
         ZStack{
             VStack {
-                LinearGradient(gradient: Gradient(colors: [Color.clear, Color.yellow, Color.yellow]), startPoint: .top, endPoint: .bottom)
+                LinearGradient(gradient: Gradient( colors: [Color.clear, player1Win ? Color.cyan : Color.yellow, player1Win ? Color.cyan : Color.yellow]), startPoint: .top, endPoint: .bottom)
                     .overlay(
                         VStack{
                             Text(self.gameVM.player2.name)
@@ -56,7 +58,7 @@ struct GamePage: View {
                         alignment: .top
                     )
                 
-                LinearGradient(gradient: Gradient(colors: [Color.clear, Color.cyan, Color.cyan]), startPoint: .bottom, endPoint: .top)
+                LinearGradient(gradient: Gradient(colors: [Color.clear, player2Win ? Color.yellow : Color.cyan, player2Win ? Color.yellow : Color.cyan]), startPoint: .bottom, endPoint: .top)
                     .overlay(
                         VStack{
                             Text("It's your turn")
@@ -69,7 +71,7 @@ struct GamePage: View {
                         alignment: .bottom
                     )
             }
-            SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), gameVM: self.gameVM, currentPlayer: $currentPlayer), options: [.allowsTransparency])
+            SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), gameVM: self.gameVM, currentPlayer: $currentPlayer, player1win: $player1Win, player2win: $player2Win), options: [.allowsTransparency])
         }
     }
 }

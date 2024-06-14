@@ -12,7 +12,6 @@ struct GameMenu: View {
     @State var player2Name: String = ""
     
     var body: some View {
-        
         NavigationStack{
             Spacer()
             Spacer()
@@ -21,7 +20,7 @@ struct GameMenu: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 35)
                 .padding(.vertical, 10)
-                
+            
             TextField("Player2 (empty = bot)", text: $player2Name)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal, 35)
@@ -37,7 +36,7 @@ struct GameMenu: View {
                     .padding(.vertical, 10)
             }
             .buttonStyle(.borderedProminent)
-                
+            
             Spacer()
             Spacer()
             Spacer()
