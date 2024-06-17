@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC57ADAC2C201B2F00A8ED49 /* Stub in Frameworks */ = {isa = PBXBuildFile; productRef = EC57ADAB2C201B2F00A8ED49 /* Stub */; };
 		ECDA74882BF3AD500014FFF4 /* DouShouQiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */; };
 		ECDA748C2BF3AD510014FFF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */; };
 		ECDA748F2BF3AD510014FFF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDA748E2BF3AD510014FFF4 /* Preview Assets.xcassets */; };
@@ -107,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC57ADAC2C201B2F00A8ED49 /* Stub in Frameworks */,
 				ECDA74D22BFF32120014FFF4 /* DSQ.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +280,9 @@
 			dependencies = (
 			);
 			name = DouShouQi;
+			packageProductDependencies = (
+				EC57ADAB2C201B2F00A8ED49 /* Stub */,
+			);
 			productName = DouShouQi;
 			productReference = ECDA74842BF3AD500014FFF4 /* DouShouQi.app */;
 			productType = "com.apple.product-type.application";
@@ -736,6 +741,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC57ADAB2C201B2F00A8ED49 /* Stub */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Stub;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ECDA747C2BF3AD500014FFF4 /* Project object */;
 }

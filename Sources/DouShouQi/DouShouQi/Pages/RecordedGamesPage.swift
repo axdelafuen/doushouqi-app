@@ -6,21 +6,31 @@
 //
 
 import SwiftUI
+import Stub
 
 struct RecordedGamesPage: View {
+    let records = Stub.gamesRecorded
+    
     var body: some View {
         List{
-            VStack(alignment: .leading, spacing: 10){
-                Text("Irion vs Illidan")
-                    .fontWeight(.semibold)
-                
-                Text("Irion wins")
-            }
-            VStack(alignment: .leading, spacing: 10){
-                Text("Sylvanas vs Illidan")
-                    .fontWeight(.semibold)
-                
-                Text("Sylvanas wins")
+            ForEach(records){ record in
+                VStack(alignment: .leading, spacing: 10){
+                    Text("\(record.player1.name) vs \(record.player2.name)")
+                        .fontWeight(.semibold)
+                    
+                    switch(record.gameResult) {
+                    case .winner(winner: let w, reason: _):
+                        if w == record.player1.id {
+                            Text("\(record.player1.name) win")
+                        }else{
+                            Text("\(record.player2.name) win")
+                        }
+                    default:
+                        Text("ERROR")
+                    }
+                    
+                    
+                }
             }
         }
         .navigationTitle("Recorded Games")
