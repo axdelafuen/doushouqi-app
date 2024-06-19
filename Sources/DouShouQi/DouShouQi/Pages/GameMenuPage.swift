@@ -41,7 +41,9 @@ struct GameMenuPage: View {
             Spacer()
             
             NavigationLink {
-                ARPage()
+                ARViewContainer()
+                    .ignoresSafeArea()
+                    //.navigationBarBackButtonHidden(true)
             } label: {
                 Text("Try it in AR !")
                     .padding(.horizontal, 35)

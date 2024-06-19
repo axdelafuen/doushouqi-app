@@ -11,7 +11,7 @@ import Stub
 struct LeaderboardPage: View {
     var body: some View {
         let stats = Stub.gamesLeaderboard
-        var rank: Int = 1
+        let rank: Int = 1
         List{
             ForEach(stats) { stat in
                 HStack{

@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		EC57ADAC2C201B2F00A8ED49 /* Stub in Frameworks */ = {isa = PBXBuildFile; productRef = EC57ADAB2C201B2F00A8ED49 /* Stub */; };
+		EC96A00F2C22CFE30022A15B /* wolf.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A0062C22CFE30022A15B /* wolf.usdz */; };
+		EC96A0102C22CFE30022A15B /* lion.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A0072C22CFE30022A15B /* lion.usdz */; };
+		EC96A0112C22CFE30022A15B /* dog.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A0082C22CFE30022A15B /* dog.usdz */; };
+		EC96A0122C22CFE30022A15B /* elephant.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A0092C22CFE30022A15B /* elephant.usdz */; };
+		EC96A0132C22CFE30022A15B /* tiger.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00A2C22CFE30022A15B /* tiger.usdz */; };
+		EC96A0142C22CFE30022A15B /* leopard.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00B2C22CFE30022A15B /* leopard.usdz */; };
+		EC96A0152C22CFE30022A15B /* board.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00C2C22CFE30022A15B /* board.usdz */; };
+		EC96A0162C22CFE30022A15B /* cat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00D2C22CFE30022A15B /* cat.usdz */; };
+		EC96A0172C22CFE30022A15B /* rat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00E2C22CFE30022A15B /* rat.usdz */; };
 		ECDA74882BF3AD500014FFF4 /* DouShouQiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */; };
 		ECDA748C2BF3AD510014FFF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */; };
 		ECDA748F2BF3AD510014FFF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDA748E2BF3AD510014FFF4 /* Preview Assets.xcassets */; };
@@ -70,6 +79,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		EC96A0062C22CFE30022A15B /* wolf.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = wolf.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/wolf.usdz"; sourceTree = "<group>"; };
+		EC96A0072C22CFE30022A15B /* lion.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = lion.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/lion.usdz"; sourceTree = "<group>"; };
+		EC96A0082C22CFE30022A15B /* dog.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = dog.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/dog.usdz"; sourceTree = "<group>"; };
+		EC96A0092C22CFE30022A15B /* elephant.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = elephant.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/elephant.usdz"; sourceTree = "<group>"; };
+		EC96A00A2C22CFE30022A15B /* tiger.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = tiger.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/tiger.usdz"; sourceTree = "<group>"; };
+		EC96A00B2C22CFE30022A15B /* leopard.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = leopard.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/leopard.usdz"; sourceTree = "<group>"; };
+		EC96A00C2C22CFE30022A15B /* board.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = board.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/board.usdz"; sourceTree = "<group>"; };
+		EC96A00D2C22CFE30022A15B /* cat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = cat.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/cat.usdz"; sourceTree = "<group>"; };
+		EC96A00E2C22CFE30022A15B /* rat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = rat.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/rat.usdz"; sourceTree = "<group>"; };
 		ECDA74842BF3AD500014FFF4 /* DouShouQi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouShouQi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiApp.swift; sourceTree = "<group>"; };
 		ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,6 +148,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC96A0052C22CFC00022A15B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EC96A00C2C22CFE30022A15B /* board.usdz */,
+				EC96A00D2C22CFE30022A15B /* cat.usdz */,
+				EC96A0082C22CFE30022A15B /* dog.usdz */,
+				EC96A0092C22CFE30022A15B /* elephant.usdz */,
+				EC96A00B2C22CFE30022A15B /* leopard.usdz */,
+				EC96A0072C22CFE30022A15B /* lion.usdz */,
+				EC96A00E2C22CFE30022A15B /* rat.usdz */,
+				EC96A00A2C22CFE30022A15B /* tiger.usdz */,
+				EC96A0062C22CFE30022A15B /* wolf.usdz */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		ECDA747B2BF3AD500014FFF4 = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +292,7 @@
 		ECDA75442C1C34FA0014FFF4 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				EC96A0052C22CFC00022A15B /* Assets */,
 				ECDA75452C1C352F0014FFF4 /* ARPage.swift */,
 			);
 			path = AR;
@@ -372,7 +407,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECDA748F2BF3AD510014FFF4 /* Preview Assets.xcassets in Resources */,
+				EC96A0132C22CFE30022A15B /* tiger.usdz in Resources */,
+				EC96A00F2C22CFE30022A15B /* wolf.usdz in Resources */,
+				EC96A0122C22CFE30022A15B /* elephant.usdz in Resources */,
+				EC96A0162C22CFE30022A15B /* cat.usdz in Resources */,
 				ECDA748C2BF3AD510014FFF4 /* Assets.xcassets in Resources */,
+				EC96A0102C22CFE30022A15B /* lion.usdz in Resources */,
+				EC96A0152C22CFE30022A15B /* board.usdz in Resources */,
+				EC96A0112C22CFE30022A15B /* dog.usdz in Resources */,
+				EC96A0142C22CFE30022A15B /* leopard.usdz in Resources */,
+				EC96A0172C22CFE30022A15B /* rat.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,11 +622,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DouShouQi/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DRCMU7YM68;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -595,6 +643,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.uca.iut.DouShouQi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = tpiOS_2023;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -606,11 +656,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DouShouQi/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = DRCMU7YM68;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -623,6 +677,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.uca.iut.DouShouQi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = tpiOS_2023;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
