@@ -14,17 +14,14 @@ struct ARViewContainer: UIViewRepresentable {
     func makeUIView(context: Context) -> ARView {
         let arView = ARView(frame: .zero)
         
-        // Configure AR session
         let configuration = ARWorldTrackingConfiguration()
         arView.session.run(configuration)
         
-        // Create an anchor and add the model to it
-        let anchorEntity = AnchorEntity(world: .zero)
+        //let anchorEntity = AnchorEntity(world: .zero)
+        let anchorEntity = AnchorEntity(.plane(.horizontal, classification: .floor, minimumBounds: SIMD2<Float>(0.2, 0.2)))
         arView.scene.addAnchor(anchorEntity)
         
-        // Load the USDZ model
         let usdzModel = try! Entity.loadModel(named: "board")
-    
         anchorEntity.addChild(usdzModel)
         
         return arView

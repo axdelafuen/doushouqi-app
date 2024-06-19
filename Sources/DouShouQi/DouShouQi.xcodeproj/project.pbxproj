@@ -19,7 +19,6 @@
 		EC96A0172C22CFE30022A15B /* rat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00E2C22CFE30022A15B /* rat.usdz */; };
 		ECDA74882BF3AD500014FFF4 /* DouShouQiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */; };
 		ECDA748C2BF3AD510014FFF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */; };
-		ECDA748F2BF3AD510014FFF4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDA748E2BF3AD510014FFF4 /* Preview Assets.xcassets */; };
 		ECDA74992BF3AD510014FFF4 /* DouShouQiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74982BF3AD510014FFF4 /* DouShouQiTests.swift */; };
 		ECDA74A32BF3AD510014FFF4 /* DouShouQiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74A22BF3AD510014FFF4 /* DouShouQiUITests.swift */; };
 		ECDA74A52BF3AD510014FFF4 /* DouShouQiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74A42BF3AD510014FFF4 /* DouShouQiUITestsLaunchTests.swift */; };
@@ -88,10 +87,10 @@
 		EC96A00C2C22CFE30022A15B /* board.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = board.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/board.usdz"; sourceTree = "<group>"; };
 		EC96A00D2C22CFE30022A15B /* cat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = cat.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/cat.usdz"; sourceTree = "<group>"; };
 		EC96A00E2C22CFE30022A15B /* rat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = rat.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/rat.usdz"; sourceTree = "<group>"; };
+		EC96A01D2C22DF1C0022A15B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECDA74842BF3AD500014FFF4 /* DouShouQi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouShouQi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiApp.swift; sourceTree = "<group>"; };
 		ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		ECDA748E2BF3AD510014FFF4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECDA74942BF3AD510014FFF4 /* DouShouQiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouShouQiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDA74982BF3AD510014FFF4 /* DouShouQiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiTests.swift; sourceTree = "<group>"; };
 		ECDA749E2BF3AD510014FFF4 /* DouShouQiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DouShouQiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +163,14 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		EC96A01C2C22DF1C0022A15B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EC96A01D2C22DF1C0022A15B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		ECDA747B2BF3AD500014FFF4 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +195,7 @@
 		ECDA74862BF3AD500014FFF4 /* DouShouQi */ = {
 			isa = PBXGroup;
 			children = (
+				EC96A01C2C22DF1C0022A15B /* Preview Content */,
 				ECDA75442C1C34FA0014FFF4 /* AR */,
 				ECDA74F02C1338240014FFF4 /* DebugCLI */,
 				ECDA74E92C0884970014FFF4 /* ViewModel */,
@@ -196,17 +204,8 @@
 				ECDA74B82BF3B97E0014FFF4 /* UiModel */,
 				ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */,
 				ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */,
-				ECDA748D2BF3AD510014FFF4 /* Preview Content */,
 			);
 			path = DouShouQi;
-			sourceTree = "<group>";
-		};
-		ECDA748D2BF3AD510014FFF4 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				ECDA748E2BF3AD510014FFF4 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		ECDA74972BF3AD510014FFF4 /* DouShouQiTests */ = {
@@ -406,7 +405,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECDA748F2BF3AD510014FFF4 /* Preview Assets.xcassets in Resources */,
 				EC96A0132C22CFE30022A15B /* tiger.usdz in Resources */,
 				EC96A00F2C22CFE30022A15B /* wolf.usdz in Resources */,
 				EC96A0122C22CFE30022A15B /* elephant.usdz in Resources */,
