@@ -17,6 +17,9 @@
 		EC96A0152C22CFE30022A15B /* board.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00C2C22CFE30022A15B /* board.usdz */; };
 		EC96A0162C22CFE30022A15B /* cat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00D2C22CFE30022A15B /* cat.usdz */; };
 		EC96A0172C22CFE30022A15B /* rat.usdz in Resources */ = {isa = PBXBuildFile; fileRef = EC96A00E2C22CFE30022A15B /* rat.usdz */; };
+		ECC63AD82C29964700B09362 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = ECC63AD72C29964700B09362 /* Localizable.xcstrings */; };
+		ECC63ADA2C2997CB00B09362 /* LanguagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC63AD92C2997CB00B09362 /* LanguagePicker.swift */; };
+		ECC63AE02C29985500B09362 /* LanguageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC63ADF2C29985500B09362 /* LanguageEnum.swift */; };
 		ECDA74882BF3AD500014FFF4 /* DouShouQiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */; };
 		ECDA748C2BF3AD510014FFF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */; };
 		ECDA74992BF3AD510014FFF4 /* DouShouQiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECDA74982BF3AD510014FFF4 /* DouShouQiTests.swift */; };
@@ -88,6 +91,9 @@
 		EC96A00D2C22CFE30022A15B /* cat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = cat.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/cat.usdz"; sourceTree = "<group>"; };
 		EC96A00E2C22CFE30022A15B /* rat.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = rat.usdz; path = "../../../../../../../Downloads/swiftui_arkit_2024 6/objects/rat.usdz"; sourceTree = "<group>"; };
 		EC96A01D2C22DF1C0022A15B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		ECC63AD72C29964700B09362 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		ECC63AD92C2997CB00B09362 /* LanguagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePicker.swift; sourceTree = "<group>"; };
+		ECC63ADF2C29985500B09362 /* LanguageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageEnum.swift; sourceTree = "<group>"; };
 		ECDA74842BF3AD500014FFF4 /* DouShouQi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DouShouQi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECDA74872BF3AD500014FFF4 /* DouShouQiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouShouQiApp.swift; sourceTree = "<group>"; };
 		ECDA748B2BF3AD510014FFF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -174,6 +180,7 @@
 		ECDA747B2BF3AD500014FFF4 = {
 			isa = PBXGroup;
 			children = (
+				ECC63AD72C29964700B09362 /* Localizable.xcstrings */,
 				ECDA74862BF3AD500014FFF4 /* DouShouQi */,
 				ECDA74972BF3AD510014FFF4 /* DouShouQiTests */,
 				ECDA74A12BF3AD510014FFF4 /* DouShouQiUITests */,
@@ -232,6 +239,8 @@
 				ECDA74B92BF3B9A10014FFF4 /* ThemeEnum.swift */,
 				ECDA74DD2C0487930014FFF4 /* PiecesNode.swift */,
 				ECDA74E12C048FB10014FFF4 /* BoardNode.swift */,
+				ECC63AD92C2997CB00B09362 /* LanguagePicker.swift */,
+				ECC63ADF2C29985500B09362 /* LanguageEnum.swift */,
 			);
 			path = UiModel;
 			sourceTree = "<group>";
@@ -387,6 +396,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = ECDA747B2BF3AD500014FFF4;
 			productRefGroup = ECDA74852BF3AD500014FFF4 /* Products */;
@@ -410,6 +420,7 @@
 				EC96A0122C22CFE30022A15B /* elephant.usdz in Resources */,
 				EC96A0162C22CFE30022A15B /* cat.usdz in Resources */,
 				ECDA748C2BF3AD510014FFF4 /* Assets.xcassets in Resources */,
+				ECC63AD82C29964700B09362 /* Localizable.xcstrings in Resources */,
 				EC96A0102C22CFE30022A15B /* lion.usdz in Resources */,
 				EC96A0152C22CFE30022A15B /* board.usdz in Resources */,
 				EC96A0112C22CFE30022A15B /* dog.usdz in Resources */,
@@ -456,9 +467,11 @@
 				ECDA74882BF3AD500014FFF4 /* DouShouQiApp.swift in Sources */,
 				ECDA74BA2BF3B9A10014FFF4 /* ThemeEnum.swift in Sources */,
 				ECDA74F62C13385F0014FFF4 /* Animal.Symbol.swift in Sources */,
+				ECC63ADA2C2997CB00B09362 /* LanguagePicker.swift in Sources */,
 				ECDA74BD2BF3BAD70014FFF4 /* ThemePicker.swift in Sources */,
 				ECDA74EB2C0884A80014FFF4 /* Game.VM.swift in Sources */,
 				ECDA74B22BF3AD8D0014FFF4 /* MainPage.swift in Sources */,
+				ECC63AE02C29985500B09362 /* LanguageEnum.swift in Sources */,
 				ECDA74FA2C13385F0014FFF4 /* CellType.Symbol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

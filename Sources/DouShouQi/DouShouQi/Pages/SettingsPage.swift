@@ -8,20 +8,13 @@
 import SwiftUI
 
 struct SettingsPage: View {
-    
-    @AppStorage("lang") private var lang = "US"
-   
     var body: some View {
         NavigationStack{
             Form{
                 Section(header: Text("Display")){
                     ThemePicker()
                     
-                    Picker("Language", selection: $lang) {
-                        ForEach(["US", "FR"], id: \.self) { lang in
-                            Text(lang)
-                        }
-                    }
+                    LanguagePicker()
                 }
             }
             .navigationTitle("Settings")

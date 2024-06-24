@@ -1,0 +1,228 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "#%lld" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "#%lld"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ vs %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ vs %2$@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ vs %2$@"
+          }
+        }
+      }
+    },
+    "%@ win" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ victoire(s)"
+          }
+        }
+      }
+    },
+    "%lld wins / %lld lost" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld wins / %2$lld lost"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld victoire(s) / %2$lld défaite(s)"
+          }
+        }
+      }
+    },
+    "Display" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Montrer"
+          }
+        }
+      }
+    },
+    "DouShouQi" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DouShouQi"
+          }
+        }
+      }
+    },
+    "ERROR" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ERREUR"
+          }
+        }
+      }
+    },
+    "Game menu" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu du jeu"
+          }
+        }
+      }
+    },
+    "It's your turn" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "À toi de jouer"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
+          }
+        }
+      }
+    },
+    "Leaderboard" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tableau des scores"
+          }
+        }
+      }
+    },
+    "Play now" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jouer"
+          }
+        }
+      }
+    },
+    "Player1 (empty = bot)" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueur1 (vide = robot)"
+          }
+        }
+      }
+    },
+    "Player2 (empty = bot)" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Joueur2 (vide= robot)"
+          }
+        }
+      }
+    },
+    "Recorded games" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parties enregistrés"
+          }
+        }
+      }
+    },
+    "Recorded Games" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parties Enregistrés"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paramètres"
+          }
+        }
+      }
+    },
+    "Start game !" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lancer la partie !"
+          }
+        }
+      }
+    },
+    "Theme" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thème"
+          }
+        }
+      }
+    },
+    "Try it in AR !" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essayez en RA !"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
