@@ -17,8 +17,8 @@ struct ARViewContainer: UIViewRepresentable {
         let configuration = ARWorldTrackingConfiguration()
         arView.session.run(configuration)
         
-        //let anchorEntity = AnchorEntity(world: .zero)
-        let anchorEntity = AnchorEntity(.plane(.horizontal, classification: .floor, minimumBounds: SIMD2<Float>(0.2, 0.2)))
+        let anchorEntity = AnchorEntity(world: .zero)
+        //let anchorEntity = AnchorEntity(.plane(.horizontal, classification: .any, minimumBounds: SIMD2<Float>(0.2, 0.2)))
         arView.scene.addAnchor(anchorEntity)
         
         let usdzModel = try! Entity.loadModel(named: "board")

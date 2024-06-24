@@ -16,7 +16,13 @@ struct GamePage: View {
     @State private var player1Win: Bool = false
     @State private var player2Win: Bool = false
     
+    var needRatio:Bool = false
+    
     init(player1Name: String, player2Name: String) {
+        if (UIScreen.main.bounds.size.width*2 > UIScreen.main.bounds.size.height) {
+            needRatio = true
+        }
+        
         var player1:Player
         var player2:Player
         
@@ -43,13 +49,15 @@ struct GamePage: View {
     }
     
     var body: some View {
-        ZStack{
-            VStack {
-                LinearGradient(gradient: Gradient( colors: [Color.clear, player1Win ? Color.cyan : Color.yellow, player1Win ? Color.cyan : Color.yellow]), startPoint: .top, endPoint: .bottom)
+        let colorOpacity = 0.6
+        
+        ZStack {
+            VStack(spacing:0) {
+                LinearGradient(gradient: Gradient( colors: [Color.clear, player1Win ? Color.cyan.opacity(colorOpacity) : Color.yellow.opacity(colorOpacity), player1Win ? Color.cyan.opacity(colorOpacity) : Color.yellow.opacity(colorOpacity)]), startPoint: .top, endPoint: .bottom)
                     .overlay(
                         VStack{
                             Text(self.gameVM.player2.name)
-                                .padding()
+                                .padding(.top)
                                 .font(.largeTitle)
                             Text("It's your turn")
                                 .foregroundColor(.gray)
@@ -58,25 +66,25 @@ struct GamePage: View {
                         alignment: .top
                     )
                 
-                LinearGradient(gradient: Gradient(colors: [Color.clear, player2Win ? Color.yellow : Color.cyan, player2Win ? Color.yellow : Color.cyan]), startPoint: .bottom, endPoint: .top)
+                LinearGradient(gradient: Gradient(colors: [Color.clear, player2Win ? Color.yellow.opacity(colorOpacity) : Color.cyan.opacity(colorOpacity), player2Win ? Color.yellow.opacity(colorOpacity) : Color.cyan.opacity(colorOpacity)]), startPoint: .bottom, endPoint: .top)
                     .overlay(
                         VStack{
                             Text("It's your turn")
                                 .foregroundColor(.gray)
                                 .opacity((currentPlayer.id == gameVM.player1.id ) ? 1 : 0)
                             Text(self.gameVM.player1.name)
-                                .padding()
+                                .padding(.bottom)
                                 .font(.largeTitle)
                         },
                         alignment: .bottom
                     )
             }
+            
             SpriteView(scene: GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height), gameVM: self.gameVM, currentPlayer: $currentPlayer, player1win: $player1Win, player2win: $player2Win), options: [.allowsTransparency])
+                .frame(
+                    width: (needRatio ?  UIScreen.main.bounds.size.width*0.8 : .infinity),
+                    height: (needRatio ? UIScreen.main.bounds.size.height*0.8 : .infinity)
+                )
         }
     }
 }
-/*
-#Preview {
-    GamePage()
-}
-*/

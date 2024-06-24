@@ -31,6 +31,7 @@ struct GameMenuPage: View {
             
             NavigationLink {
                 GamePage(player1Name: $player1Name.wrappedValue, player2Name: $player2Name.wrappedValue)
+                    //.ignoresSafeArea()
             } label: {
                 Text("Start game !")
                     .padding(.horizontal, 35)
@@ -43,7 +44,6 @@ struct GameMenuPage: View {
             NavigationLink {
                 ARViewContainer()
                     .ignoresSafeArea()
-                    //.navigationBarBackButtonHidden(true)
             } label: {
                 Text("Try it in AR !")
                     .padding(.horizontal, 35)
