@@ -56,7 +56,7 @@ class GameScene: SKScene {
         setUpBoard(board:gameVM.game.board, ratio: ratio)
 
         gameVM.game.addGameStartedListener { board in
-            self.startText(textValue: "🎉 GAME STARTS! 🎉")
+            self.startText(textValue: "🎉 GO !!! 🎉")
         }
         
         gameVM.game.addInvalidMoveCallbacksListener { _, move, player, result in
@@ -136,6 +136,10 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.currentNode = nil
+        if (!(currentPlayer is HumanPlayer)) {
+            return
+        }
+        
         if let touch = touches.first {
             
             let location = touch.location(in: self)

@@ -12,7 +12,7 @@ struct ThemePicker: View {
     var body: some View {
         Picker("Theme", selection: $selectedTheme) {
             ForEach(AppTheme.allCases) { theme in
-                Text(theme.rawValue).tag(theme)
+                Text(LocalizedStringKey(theme.rawValue)).tag(theme)
             }
         }
     }

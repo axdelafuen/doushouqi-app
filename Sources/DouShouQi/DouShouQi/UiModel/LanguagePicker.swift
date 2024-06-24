@@ -14,7 +14,7 @@ struct LanguagePicker: View {
     var body: some View {
         Picker("Language", selection: $selectedLanguage) {
             ForEach(AppLanguage.allCases) { lang in
-                Text(lang.rawValue).tag(lang)
+                Text(LocalizedStringKey(lang.rawValue)).tag(lang)
             }
         }
     }
