@@ -12,7 +12,7 @@ import SwiftUI
 
 class GameScene: SKScene {
    
-    private var gameVM:GameVM!
+    @ObservedObject private var gameVM:GameVM
     
     private var currentNode: SKNode?
     @Binding var currentPlayer: Player
@@ -31,13 +31,13 @@ class GameScene: SKScene {
     
     init(size:CGSize, gameVM:GameVM, currentPlayer: Binding<Player>, player1win: Binding<Bool>, player2win: Binding<Bool>) {
         self.gameVM = gameVM
-        self.gameVM.restartGame()
         
         self._currentPlayer = currentPlayer
         self._player1win = player1win
         self._player2win = player2win
         
         super.init(size: size)
+        self.gameVM.restartGame()
     }
     
     required init?(coder aDecoder: NSCoder) {

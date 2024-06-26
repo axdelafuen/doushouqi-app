@@ -11,7 +11,7 @@ import DouShouQiModel
 
 struct GamePage: View {
     
-    @ObservedObject var gameVM: GameVM
+    @StateObject var gameVM: GameVM
     @State private var currentPlayer: Player
     @State private var player1Win: Bool = false
     @State private var player2Win: Bool = false
@@ -42,7 +42,7 @@ struct GamePage: View {
         do {
             currentPlayer = player1
             let game = try Game(withRules: ClassicRules(), andPlayer1: player1, andPlayer2: player2)
-            _gameVM = ObservedObject(wrappedValue: GameVM(game: game, player1: player1, player2: player2))
+            _gameVM = StateObject(wrappedValue: GameVM(game: game, player1: player1, player2: player2))
         }catch {
             fatalError("ERROR GAME VM CREATION")
         }
