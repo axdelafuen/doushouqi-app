@@ -8,6 +8,8 @@
     <h1>DouShouQi App</h1>
 </div>
 
+You can find the back-end in this repository : [doushouqi](https://github.com/axdelafuen/doushouqi)
+
 # Getting started
 
 Clone the repository :
@@ -16,25 +18,7 @@ Clone the repository :
 git clone https://codefirst.iut.uca.fr/git/axel.de_la_fuente/doushouqi-app.git
 ```
 
-Build dependencies :
-
-```shell
-
-```
-
-Run the app :
-
-```shell
-
-```
-
-# Tests
-
-Tests can be launch by using the following commands :
-
-```shell
-
-```
+Then build it with xcode...
 
 # Author
 
@@ -45,5 +29,3 @@ Tests can be launch by using the following commands :
 Thanks to my professor for his guidance and feedback throughout the development of this project.
 
 - Marc CHEVALDONNE
-
-
